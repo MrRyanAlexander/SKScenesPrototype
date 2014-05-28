@@ -25,6 +25,8 @@
 		4DDFC1701935906D00DCEF9B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DDFC1481935906D00DCEF9B /* UIKit.framework */; };
 		4DDFC1781935906E00DCEF9B /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4DDFC1761935906E00DCEF9B /* InfoPlist.strings */; };
 		4DDFC17A1935906E00DCEF9B /* GoProtoTypeTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DDFC1791935906E00DCEF9B /* GoProtoTypeTests.m */; };
+		4DDFC185193590F200DCEF9B /* GOBoardScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DDFC184193590F200DCEF9B /* GOBoardScene.m */; };
+		4DDFC1881935DB9400DCEF9B /* GOMapScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DDFC1871935DB9300DCEF9B /* GOMapScene.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -62,6 +64,10 @@
 		4DDFC1751935906E00DCEF9B /* GoProtoTypeTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoProtoTypeTests-Info.plist"; sourceTree = "<group>"; };
 		4DDFC1771935906E00DCEF9B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		4DDFC1791935906E00DCEF9B /* GoProtoTypeTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GoProtoTypeTests.m; sourceTree = "<group>"; };
+		4DDFC183193590F200DCEF9B /* GOBoardScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GOBoardScene.h; sourceTree = "<group>"; };
+		4DDFC184193590F200DCEF9B /* GOBoardScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GOBoardScene.m; sourceTree = "<group>"; };
+		4DDFC1861935DB9300DCEF9B /* GOMapScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GOMapScene.h; sourceTree = "<group>"; };
+		4DDFC1871935DB9300DCEF9B /* GOMapScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GOMapScene.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -131,6 +137,10 @@
 				4DDFC15F1935906D00DCEF9B /* GOViewController.m */,
 				4DDFC1611935906D00DCEF9B /* GOMyScene.h */,
 				4DDFC1621935906D00DCEF9B /* GOMyScene.m */,
+				4DDFC183193590F200DCEF9B /* GOBoardScene.h */,
+				4DDFC184193590F200DCEF9B /* GOBoardScene.m */,
+				4DDFC1861935DB9300DCEF9B /* GOMapScene.h */,
+				4DDFC1871935DB9300DCEF9B /* GOMapScene.m */,
 				4DDFC1641935906D00DCEF9B /* Spaceship.png */,
 				4DDFC1661935906D00DCEF9B /* Images.xcassets */,
 				4DDFC14D1935906D00DCEF9B /* Supporting Files */,
@@ -268,9 +278,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				4DDFC1631935906D00DCEF9B /* GOMyScene.m in Sources */,
+				4DDFC185193590F200DCEF9B /* GOBoardScene.m in Sources */,
 				4DDFC1571935906D00DCEF9B /* GOAppDelegate.m in Sources */,
 				4DDFC1601935906D00DCEF9B /* GOViewController.m in Sources */,
 				4DDFC1531935906D00DCEF9B /* main.m in Sources */,
+				4DDFC1881935DB9400DCEF9B /* GOMapScene.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

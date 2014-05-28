@@ -1,16 +1,16 @@
 //
-//  GOMyScene.m
+//  GOBoardScene.m
 //  GoProtoType
 //
 //  Created by Pminu on 5/27/14.
 //  Copyright (c) 2014 LGMRA Studios. All rights reserved.
 //
 
-#import "GOMyScene.h"
+#import "GOBoardScene.h"
 
-@implementation GOMyScene
+@implementation GOBoardScene
 
--(id)initWithSize:(CGSize)size {    
+-(id)initWithSize:(CGSize)size {
     if (self = [super initWithSize:size]) {
         /* Setup your scene here */
         
@@ -18,8 +18,9 @@
         
         SKLabelNode *myLabel = [SKLabelNode labelNodeWithFontNamed:@"Chalkduster"];
         
-        myLabel.text = @"Start Scene Loaded!";
-        myLabel.fontSize = 25;
+        myLabel.text = @"Board Scene Loaded!";
+        myLabel.fontSize = 20;
+        myLabel.fontColor = [UIColor magentaColor];
         myLabel.position = CGPointMake(CGRectGetMidX(self.frame),
                                        CGRectGetMidY(self.frame));
         

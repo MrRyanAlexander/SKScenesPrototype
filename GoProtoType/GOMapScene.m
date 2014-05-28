@@ -1,16 +1,15 @@
 //
-//  GOMyScene.m
+//  GOMapScene.m
 //  GoProtoType
 //
-//  Created by Pminu on 5/27/14.
+//  Created by Pminu on 5/28/14.
 //  Copyright (c) 2014 LGMRA Studios. All rights reserved.
 //
 
-#import "GOMyScene.h"
+#import "GOMapScene.h"
 
-@implementation GOMyScene
-
--(id)initWithSize:(CGSize)size {    
+@implementation GOMapScene
+-(id)initWithSize:(CGSize)size {
     if (self = [super initWithSize:size]) {
         /* Setup your scene here */
         
@@ -18,8 +17,9 @@
         
         SKLabelNode *myLabel = [SKLabelNode labelNodeWithFontNamed:@"Chalkduster"];
         
-        myLabel.text = @"Start Scene Loaded!";
-        myLabel.fontSize = 25;
+        myLabel.text = @"Map Scroll Sceen Loaded!";
+        myLabel.fontSize = 15;
+        myLabel.fontColor = [UIColor yellowColor];
         myLabel.position = CGPointMake(CGRectGetMidX(self.frame),
                                        CGRectGetMidY(self.frame));
         
@@ -49,5 +49,4 @@
 -(void)update:(CFTimeInterval)currentTime {
     /* Called before each frame is rendered */
 }
-
 @end
