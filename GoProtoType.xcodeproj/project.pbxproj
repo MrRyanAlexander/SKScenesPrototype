@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4DCD87C01938F04E00EC91CE /* Ball.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DCD87BF1938F04E00EC91CE /* Ball.m */; };
+		4DCD87C31938F06A00EC91CE /* Player.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DCD87C21938F06A00EC91CE /* Player.m */; };
+		4DCD87C61938F9DD00EC91CE /* MyParticle.sks in Resources */ = {isa = PBXBuildFile; fileRef = 4DCD87C41938F9DD00EC91CE /* MyParticle.sks */; };
+		4DCD87C71938F9DD00EC91CE /* spark.png in Resources */ = {isa = PBXBuildFile; fileRef = 4DCD87C51938F9DD00EC91CE /* spark.png */; };
 		4DDFC1451935906D00DCEF9B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DDFC1441935906D00DCEF9B /* Foundation.framework */; };
 		4DDFC1471935906D00DCEF9B /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DDFC1461935906D00DCEF9B /* CoreGraphics.framework */; };
 		4DDFC1491935906D00DCEF9B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DDFC1481935906D00DCEF9B /* UIKit.framework */; };
@@ -40,6 +44,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		4DCD87BE1938F04E00EC91CE /* Ball.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Ball.h; sourceTree = "<group>"; };
+		4DCD87BF1938F04E00EC91CE /* Ball.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Ball.m; sourceTree = "<group>"; };
+		4DCD87C11938F06A00EC91CE /* Player.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Player.h; sourceTree = "<group>"; };
+		4DCD87C21938F06A00EC91CE /* Player.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Player.m; sourceTree = "<group>"; };
+		4DCD87C41938F9DD00EC91CE /* MyParticle.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = MyParticle.sks; sourceTree = "<group>"; };
+		4DCD87C51938F9DD00EC91CE /* spark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = spark.png; sourceTree = "<group>"; };
 		4DDFC1411935906D00DCEF9B /* GoProtoType.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GoProtoType.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4DDFC1441935906D00DCEF9B /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		4DDFC1461935906D00DCEF9B /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -95,6 +105,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4DCD87B71938ED9C00EC91CE /* nodes */ = {
+			isa = PBXGroup;
+			children = (
+				4DCD87BE1938F04E00EC91CE /* Ball.h */,
+				4DCD87BF1938F04E00EC91CE /* Ball.m */,
+				4DCD87C11938F06A00EC91CE /* Player.h */,
+				4DCD87C21938F06A00EC91CE /* Player.m */,
+			);
+			name = nodes;
+			sourceTree = "<group>";
+		};
 		4DDFC1381935906D00DCEF9B = {
 			isa = PBXGroup;
 			children = (
@@ -139,6 +160,9 @@
 				4DDFC1621935906D00DCEF9B /* GOMyScene.m */,
 				4DDFC183193590F200DCEF9B /* GOBoardScene.h */,
 				4DDFC184193590F200DCEF9B /* GOBoardScene.m */,
+				4DCD87C41938F9DD00EC91CE /* MyParticle.sks */,
+				4DCD87C51938F9DD00EC91CE /* spark.png */,
+				4DCD87B71938ED9C00EC91CE /* nodes */,
 				4DDFC1861935DB9300DCEF9B /* GOMapScene.h */,
 				4DDFC1871935DB9300DCEF9B /* GOMapScene.m */,
 				4DDFC1641935906D00DCEF9B /* Spaceship.png */,
@@ -255,7 +279,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				4DDFC1651935906D00DCEF9B /* Spaceship.png in Resources */,
+				4DCD87C61938F9DD00EC91CE /* MyParticle.sks in Resources */,
 				4DDFC1671935906D00DCEF9B /* Images.xcassets in Resources */,
+				4DCD87C71938F9DD00EC91CE /* spark.png in Resources */,
 				4DDFC15D1935906D00DCEF9B /* Main_iPad.storyboard in Resources */,
 				4DDFC15A1935906D00DCEF9B /* Main_iPhone.storyboard in Resources */,
 				4DDFC1511935906D00DCEF9B /* InfoPlist.strings in Resources */,
@@ -280,9 +306,11 @@
 				4DDFC1631935906D00DCEF9B /* GOMyScene.m in Sources */,
 				4DDFC185193590F200DCEF9B /* GOBoardScene.m in Sources */,
 				4DDFC1571935906D00DCEF9B /* GOAppDelegate.m in Sources */,
+				4DCD87C31938F06A00EC91CE /* Player.m in Sources */,
 				4DDFC1601935906D00DCEF9B /* GOViewController.m in Sources */,
 				4DDFC1531935906D00DCEF9B /* main.m in Sources */,
 				4DDFC1881935DB9400DCEF9B /* GOMapScene.m in Sources */,
+				4DCD87C01938F04E00EC91CE /* Ball.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -499,6 +527,7 @@
 				4DDFC17F1935906E00DCEF9B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		4DDFC1801935906E00DCEF9B /* Build configuration list for PBXNativeTarget "GoProtoTypeTests" */ = {
 			isa = XCConfigurationList;
@@ -507,6 +536,7 @@
 				4DDFC1821935906E00DCEF9B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

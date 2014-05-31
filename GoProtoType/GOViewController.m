@@ -14,13 +14,24 @@
 @property (retain, nonatomic) UIButton *backButton;
 @property (retain, nonatomic) UIButton *boardButton;
 @property (retain, nonatomic) UIButton *mapButton;
-
+//@property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (nonatomic, strong) NSMutableData *responseData;
+@property (nonatomic, strong) NSMutableArray *data;
 @property (nonatomic, strong)SKView *skView;
 @property (nonatomic, strong)SKScene *boardScene;
 @property (nonatomic, strong)SKScene *startScene;
 @property (nonatomic, strong)SKScene *mapScene;
 @end
+
+
 @implementation GOViewController
+//{
+//    NSMutableArray *data;
+//}
+
+@synthesize responseData = _responseData;
+@synthesize data = _data;
 
 - (void)viewDidLoad
 {
@@ -75,6 +86,7 @@
     
     // Present the scene.
     [self.skView presentScene:self.startScene];
+    [self loadTableDataInBackground];
 }
 
 - (IBAction)buttonPressed:(id)sender
@@ -84,6 +96,7 @@
     {
         if (![self.skView.scene.name  isEqual: @"start"])
         {
+            self.tableView.alpha = 0;
             // Create the Start Scene.
             self.startScene = [GOMyScene sceneWithSize:self.skView.bounds.size];
             self.startScene.scaleMode = SKSceneScaleModeAspectFill;
@@ -95,6 +108,7 @@
     {
         if (![self.skView.scene.name  isEqual: @"board"])
         {
+            self.tableView.alpha = 0;
             // Create the Board Scene.
             self.boardScene = [GOBoardScene sceneWithSize:self.skView.bounds.size];
             self.boardScene.scaleMode = SKSceneScaleModeAspectFill;
@@ -104,13 +118,14 @@
     }
     else if ([sender tag] == 103)
     {
-        if (![self.skView.scene.name  isEqual: @"map"])
+        if (!self.tableView.alpha == 1)
         {
-            // Create the Board Scene.
-            self.mapScene = [GOMapScene sceneWithSize:self.skView.bounds.size];
-            self.mapScene.scaleMode = SKSceneScaleModeAspectFill;
-            self.mapScene.name = @"map";
-            [self.skView presentScene:self.mapScene];
+            //try showing the scroll view
+            if ([self.data count] > 0)
+            {
+                [self updateTable];
+                self.tableView.alpha = 1;
+            }
         }
     }
 }
@@ -134,4 +149,105 @@
     // Release any cached data, images, etc that aren't in use.
 }
 
+
+- (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response {
+    NSLog(@"didReceiveResponse");
+    [self.responseData setLength:0];
+}
+
+- (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)datas {
+    [self.responseData appendData:datas];
+}
+
+- (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error {
+    NSLog(@"didFailWithError");
+    NSLog([NSString stringWithFormat:@"Connection failed: %@", [error description]]);
+}
+
+- (void)connectionDidFinishLoading:(NSURLConnection *)connection {
+    NSLog(@"connectionDidFinishLoading");
+    NSLog(@"Succeeded! Received %lu bytes of data",(unsigned long)[self.responseData length]);
+    
+    // convert to JSON
+    NSError *myError = nil;
+    NSDictionary *res = [NSJSONSerialization JSONObjectWithData:self.responseData options:NSJSONReadingMutableLeaves error:&myError];
+    
+    // show all values
+    for(id key in res) {
+        
+        id value = [res objectForKey:key];
+        
+        
+        NSString *keyAsString = (NSString *)key;
+        NSString *valueAsString = (NSString *)value;
+        
+        NSLog(@"key: %@", keyAsString);
+        NSLog(@"value: %@", valueAsString);
+    }
+    
+    NSMutableArray *tempArray = [[NSMutableArray alloc]init];
+    //alloc the data array...
+    //data = [[NSMutableArray alloc]init];
+
+    // extract specific value...
+    NSArray *results = [res objectForKey:@"results"];
+    
+    for (NSDictionary *result in results) {
+        NSString *icon = [result objectForKey:@"icon"];
+        NSLog(@"icon: %@", icon);
+        
+        //here I re-use the key in res and append to the tableView
+        NSString *name = [result objectForKey:@"name"];
+        NSLog(@"name: %@", name);
+        [self.data addObject:name];
+    }
+    //self.data = [[NSMutableArray alloc]initWithArray:tempArray];
+    NSLog(@"finished getting data......data count: %lu", (unsigned long)[self.data count]);
+}
+
+- (void) loadTableDataInBackground
+{
+    //hide table view/init table data array
+    UIImage *back = [UIImage imageNamed:@"background4"];
+    self.tableView.alpha = 0;
+    self.tableView.backgroundView = [[UIImageView alloc]initWithImage:back];
+    self.data = [[NSMutableArray alloc]init];
+    
+    self.responseData = [NSMutableData data];
+    NSURLRequest *request = [NSURLRequest requestWithURL:
+                             [NSURL URLWithString:@"https://maps.googleapis.com/maps/api/place/search/json?location=-33.8670522,151.1957362&radius=500&types=food&name=harbour&sensor=false&key=YOUR_API_KEY"]];
+    [[NSURLConnection alloc] initWithRequest:request delegate:self];
+}
+
+- (void) updateTable
+{
+    [self.tableView reloadData];
+}
+
+-(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    return 1;
+}
+
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return [self.data count];
+}
+
+-(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    static NSString *CellIdentifier = @"Cell";
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+    
+    if(cell == nil)
+    {
+        cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+        cell.opaque = NO;
+    }
+    cell.textLabel.backgroundColor = [UIColor clearColor];
+    cell.backgroundColor = [UIColor clearColor];
+    cell.imageView.image = [UIImage imageNamed:@"iconLogo"];
+    cell.textLabel.text = [self.data objectAtIndex:indexPath.row];
+    return cell;
+}
 @end

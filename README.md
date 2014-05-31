@@ -9,3 +9,10 @@ I manually create three buttons inside of the view controller to navigate the sc
 ARC is enabled and doing all of the trash cleanup. 
 
 Profile tests pass with 100 SKAction spaceship nodes at 25FPS.
+
+Another update: 5/30/14
+
+Added scrolling background and object prototypes
+Added TableView, customized with dynamic data via HTTP
+*Hint: It might help having some remote data access to avoid forcing updates for general information needs
+*Note: If you want to reuse the API call to Google, use your own API key!!!
